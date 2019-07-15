@@ -2,8 +2,8 @@
 Aplicación que combina el uso de Node.js, ReactJS, Redux, Redis, ES6, Docker, Traefik.
 
 # Dependencias
-- Web: Revise la información asociada al front-end de este [enlace](https://github.com/mlezcano1985/acid_labs_front).
-- API: Revise la información asociada al back-end de este [enlace](https://github.com/mlezcano1985/acid_labs_backend).
+- Web: Revise la información asociada al front-end en este [enlace](https://github.com/mlezcano1985/acid_labs_front).
+- API: Revise la información asociada al back-end en este [enlace](https://github.com/mlezcano1985/acid_labs_backend).
 
 # Cómo empezar?
 - Clonar o descargar el repositorio.
