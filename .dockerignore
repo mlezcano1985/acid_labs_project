@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+Dockerfile
+.git
+.vscode
+.gitignore
+.babelrc.js
+.eslintrc.js

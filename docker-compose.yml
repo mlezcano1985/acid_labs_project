@@ -1,0 +1,62 @@
+version: '3'
+
+services:
+  db:
+    image: redis:latest
+    container_name: db
+    restart: always
+    hostname: db
+    ports: 
+      - "6379:6379"
+    networks:
+      - reverse-proxy
+  
+  web:
+    image: mlezcano1985/acid_lab_web
+    hostname: web
+    restart: always
+    depends_on:
+      - api
+    networks:
+      - reverse-proxy
+    labels:
+      - "traefik.port=3000"
+      - "traefik.enable=true"
+      - "traefik.frontend=web"
+      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.frontend.rule=Host:web.localhost"
+    environment:
+      REACT_APP_BASE_URL: http://api.localhost/api
+      REACT_APP_API_KEY: AIzaSyCpw-ITSec2Rq0sJVBcAqwey4x4kB4bSwM
+  api:
+    image: mlezcano1985/acid_lab_api
+    hostname: api
+    restart: always
+    depends_on:
+      - db
+    networks:
+      - reverse-proxy
+    labels:
+      - "traefik.port=3001"
+      - "traefik.enable=true"
+      - "traefik.backend=api"
+      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.frontend.rule=Host:api.localhost"
+  
+  reverse-proxy:
+    image: traefik
+    command: --api --docker
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.frontend.rule=Host:dashboard.localhost"
+      - "traefik.port=8080"
+    networks:
+      - reverse-proxy
+
+networks:
+  reverse-proxy:
