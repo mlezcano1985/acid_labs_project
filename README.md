@@ -14,3 +14,8 @@ Aplicación que combina el uso de Node.js, ReactJS, Redux, Redis, ES6, Docker, T
 - Abrir un terminal en la raíz del proyecto.
 - Ejecutar el comando `docker-compose up --build` para que la se inicien todos los contenedores.
 - Abrir en el navegador la url: [http://web.localhost](http://web.localhost)
+
+# URL
+- web: [http://web.localhost](http://web.localhost)
+- api: [http://api.localhost](http://api.localhost)
+- traefik: [http://dashboard.localhost](http://dashboard.localhost)
